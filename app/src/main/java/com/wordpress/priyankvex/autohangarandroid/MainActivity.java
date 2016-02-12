@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(android.R.drawable.ic_notification_clear_all);
+        toolbar.setLogo(R.drawable.ic_logo);
         setSupportActionBar(toolbar);
     }
 

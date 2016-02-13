@@ -1,18 +1,18 @@
 package com.wordpress.priyankvex.autohangarandroid;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.balysv.materialripple.MaterialRippleLayout;
 import com.felipecsl.quickreturn.library.QuickReturnAttacher;
 import com.felipecsl.quickreturn.library.widget.AbsListViewScrollTarget;
 import com.felipecsl.quickreturn.library.widget.QuickReturnAdapter;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView topTextView;
+    ViewGroup quickHeaderView;
     private QuickReturnTargetView topTargetView;
     ListView listView;
 
@@ -33,17 +33,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(R.drawable.ic_logo);
         setSupportActionBar(toolbar);
-        topTextView = (TextView) findViewById(R.id.quickReturnTopTarget);
-        listView = (ListView) findViewById(R.id.listViewCategories);
+        init();
 
-        CategoriesListAdapter adapter = new CategoriesListAdapter(getApplicationContext(), getCategories());
-        listView.setAdapter(new QuickReturnAdapter(adapter));
-        QuickReturnAttacher quickReturnAttacher = QuickReturnAttacher.forView(listView);
-        topTargetView = quickReturnAttacher.addTargetView(topTextView,
-                AbsListViewScrollTarget.POSITION_TOP,
-                dpToPx(this, 50));
 
     }
 
@@ -67,24 +59,56 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ServiceCategory> getCategories(){
         ArrayList<ServiceCategory> categories = new ArrayList<>();
 
-        ServiceCategory category = new ServiceCategory();
-        category.setServiceName("Oil Change");
-        category.setSeriveImageId(R.drawable.oil);
+        ServiceCategory categoryOil = new ServiceCategory();
+        categoryOil.setServiceName("Oil Change");
+        categoryOil.setSeriveImageId(R.drawable.oil);
+        ServiceCategory categoryTyres = new ServiceCategory();
+        categoryTyres.setServiceName("Tyres");
+        categoryTyres.setSeriveImageId(R.drawable.tyres);
+        ServiceCategory categoryBrakes = new ServiceCategory();
+        categoryBrakes.setServiceName("Brakes");
+        categoryBrakes.setSeriveImageId(R.drawable.brakes);
+        ServiceCategory categoryEngine = new ServiceCategory();
+        categoryEngine.setServiceName("Engine");
+        categoryEngine.setSeriveImageId(R.drawable.engine);
+        ServiceCategory categoryWash= new ServiceCategory();
+        categoryWash.setServiceName("Car Wash");
+        categoryWash.setSeriveImageId(R.drawable.wash);
+        ServiceCategory categoryMaintenance = new ServiceCategory();
+        categoryMaintenance.setServiceName("Car Maintenance");
+        categoryMaintenance.setSeriveImageId(R.drawable.maintenance);
 
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
-        categories.add(category);
+        categories.add(categoryOil);
+        categories.add(categoryTyres);
+        categories.add(categoryBrakes);
+        categories.add(categoryEngine);
+        categories.add(categoryMaintenance);
+        categories.add(categoryWash);
 
         return categories;
+    }
+
+    private void init(){
+        quickHeaderView = (ViewGroup) findViewById(R.id.quickReturnTopTarget);
+        listView = (ListView) findViewById(R.id.listViewCategories);
+        CategoriesListAdapter adapter = new CategoriesListAdapter(getApplicationContext(), getCategories());
+        listView.setAdapter(new QuickReturnAdapter(adapter));
+        QuickReturnAttacher quickReturnAttacher = QuickReturnAttacher.forView(listView);
+        topTargetView = quickReturnAttacher.addTargetView(quickHeaderView,
+                AbsListViewScrollTarget.POSITION_TOP,
+                dpToPx(this, 80));
+        quickHeaderView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_SHORT).show();
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), position + " Category", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
     }
 }

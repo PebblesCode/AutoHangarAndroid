@@ -1,6 +1,7 @@
 package com.wordpress.priyankvex.autohangarandroid.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id){
+            case R.id.action_notifications:
+                startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -1,9 +1,8 @@
-package com.wordpress.priyankvex.autohangarandroid;
+package com.wordpress.priyankvex.autohangarandroid.activities;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +16,7 @@ import com.felipecsl.quickreturn.library.QuickReturnAttacher;
 import com.felipecsl.quickreturn.library.widget.AbsListViewScrollTarget;
 import com.felipecsl.quickreturn.library.widget.QuickReturnAdapter;
 import com.felipecsl.quickreturn.library.widget.QuickReturnTargetView;
+import com.wordpress.priyankvex.autohangarandroid.R;
 import com.wordpress.priyankvex.autohangarandroid.adapters.CategoriesListAdapter;
 import com.wordpress.priyankvex.autohangarandroid.models.ServiceCategory;
 
@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         init();
-
-
     }
 
     @Override

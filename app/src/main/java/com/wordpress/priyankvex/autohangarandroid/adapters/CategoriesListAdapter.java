@@ -49,27 +49,27 @@ public class CategoriesListAdapter extends ArrayAdapter<ServiceCategory>{
 
         ServiceCategory category= getItem(position);
         // Using ViewHolder pattern for smooth scrolling
-        ViewHolder mViewHolder;
+        ViewHolder viewHolder;
         if (convertView == null) {
-            mViewHolder = new ViewHolder();
+            viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_category, parent, false);
-            mViewHolder.imageViewService = (ImageView) convertView.findViewById(R.id.imageViewService);
-            mViewHolder.textViewService = (TextView) convertView.findViewById(R.id.textViewService);
-            MaterialRippleLayout.on(mViewHolder.imageViewService)
+            viewHolder.imageViewService = (ImageView) convertView.findViewById(R.id.imageViewService);
+            viewHolder.textViewService = (TextView) convertView.findViewById(R.id.textViewService);
+            MaterialRippleLayout.on(viewHolder.imageViewService)
                     .rippleColor(Color.WHITE)
                     .rippleHover(true)
                     .rippleAlpha(0.2f)
                     .rippleOverlay(true)
                     .create();
-            convertView.setTag(mViewHolder);
+            convertView.setTag(viewHolder);
         }
         else{
-            mViewHolder = (ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        mViewHolder.textViewService.setText(category.getServiceName());
+        viewHolder.textViewService.setText(category.getServiceName());
         ImageLoader.getInstance()
-                .displayImage("drawable://" + category.getSeriveImageId(), mViewHolder.imageViewService, options);
+                .displayImage("drawable://" + category.getSeriveImageId(), viewHolder.imageViewService, options);
 
 
         return convertView;

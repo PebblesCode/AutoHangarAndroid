@@ -19,7 +19,7 @@ public class NotificationsActivity extends AppCompatActivity{
         if (getSupportActionBar()!=null){
             getSupportActionBar().setTitle("Notifications");
         }
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override

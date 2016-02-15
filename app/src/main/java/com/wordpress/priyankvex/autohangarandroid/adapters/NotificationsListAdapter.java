@@ -1,13 +1,17 @@
 package com.wordpress.priyankvex.autohangarandroid.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.wordpress.priyankvex.autohangarandroid.R;
+import com.wordpress.priyankvex.autohangarandroid.Utilities;
 import com.wordpress.priyankvex.autohangarandroid.models.Notification;
 
 import java.util.ArrayList;
@@ -32,12 +36,12 @@ public class NotificationsListAdapter extends ArrayAdapter<Notification>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Notification notification = getItem(position);
+        Log.d("test", notification.getTitle());
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_notification, parent, false);
             viewHolder.textViewTitle = (TextView) convertView.findViewById(R.id.textViewTitle);
-            viewHolder.textViewBody = (TextView) convertView.findViewById(R.id.textViewBody);
             viewHolder.textViewBody = (TextView) convertView.findViewById(R.id.textViewBody);
             viewHolder.textViewTime = (TextView) convertView.findViewById(R.id.textViewTime);
             convertView.setTag(viewHolder);
@@ -48,7 +52,7 @@ public class NotificationsListAdapter extends ArrayAdapter<Notification>{
 
         viewHolder.textViewTitle.setText(notification.getTitle());
         viewHolder.textViewBody.setText(notification.getBody());
-        viewHolder.textViewTime.setText(notification.getTime()+"");
+        viewHolder.textViewTime.setText(Utilities.getRelativeTime(notification.getTime()));
 
         return convertView;
     }

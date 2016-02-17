@@ -8,8 +8,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.wordpress.priyankvex.autohangarandroid.R;
+import com.wordpress.priyankvex.autohangarandroid.adapters.ServiceProvidersListAdapter;
+import com.wordpress.priyankvex.autohangarandroid.models.ServiceProvider;
+import com.wordpress.priyankvex.autohangarandroid.seed.ServiceProviderSeed;
+
+import java.util.ArrayList;
 
 /**
  * Created by @priyankvex on 16/2/16.
@@ -18,11 +24,17 @@ import com.wordpress.priyankvex.autohangarandroid.R;
 public class SearchActivity extends AppCompatActivity{
 
     private SearchView searchView;
+    private ListView listview;
+    private ArrayList<ServiceProvider> mServiceProviders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        mServiceProviders = ServiceProviderSeed.getServiceProviders();
+        listview = (ListView) findViewById(R.id.listViewSearchResults);
+        ServiceProvidersListAdapter adapter = new ServiceProvidersListAdapter(getApplicationContext(), mServiceProviders);
+        listview.setAdapter(adapter);
     }
 
     @Override

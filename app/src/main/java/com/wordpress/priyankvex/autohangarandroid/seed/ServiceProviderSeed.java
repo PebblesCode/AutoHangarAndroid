@@ -17,7 +17,7 @@ public class ServiceProviderSeed {
         sp.setName("Lorem ipsum dolor sit amet");
         sp.setAddress("Lorem ipsum dolor sit amet, pertinax periculis adipiscing sea te.");
         sp.setCity("Lorem Ipsum");
-        sp.setRating("4.5");
+        sp.setRating(4.5f);
 
         serviceProviders.add(sp);
         serviceProviders.add(sp);

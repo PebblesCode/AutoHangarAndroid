@@ -9,7 +9,7 @@ public class ServiceProvider {
     private String name;
     private String address;
     private String city;
-    private String rating;
+    private float rating;
 
     public String getName() {
         return name;
@@ -35,11 +35,11 @@ public class ServiceProvider {
         this.city = city;
     }
 
-    public String getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 }

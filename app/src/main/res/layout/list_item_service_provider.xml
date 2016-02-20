@@ -45,30 +45,20 @@
                 android:layout_marginBottom="8dp"
                 />
 
-            <TextView
+            <RatingBar
+                android:rating="3.5"
+                android:stepSize="0.5"
+                android:numStars="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rating : "
-                android:textColor="@color/colorSecondary"
-                android:layout_alignParentBottom="true"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_below="@+id/textViewAddress"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:id="@+id/textView"
-                android:textSize="5pt"
-                android:layout_below="@+id/textViewAddress"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewRating"
-                android:text="4.5"
-                android:layout_toRightOf="@+id/textView"
-                android:layout_marginLeft="6dp"
-                android:layout_toEndOf="@+id/textView"
-                android:textSize="5pt"
-                android:textColor="#000000"
-                android:layout_below="@+id/textViewAddress"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/ratingBar"
+                android:theme="@style/RatingBar"
                 />
 
 

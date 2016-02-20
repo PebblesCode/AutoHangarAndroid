@@ -19,5 +19,8 @@
         <item name="queryHint">@string/search_hint</item>
         <item name="android:iconifiedByDefault">false</item>
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/colorSecondary</item>
+    </style>
 
 </resources>

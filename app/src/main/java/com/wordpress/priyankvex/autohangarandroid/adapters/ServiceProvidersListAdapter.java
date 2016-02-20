@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.wordpress.priyankvex.autohangarandroid.R;
@@ -39,7 +40,7 @@ public class ServiceProvidersListAdapter extends ArrayAdapter<ServiceProvider>{
             convertView = inflater.inflate(R.layout.list_item_service_provider, parent, false);
             viewHolder.textViewName = (TextView) convertView.findViewById(R.id.textViewName);
             viewHolder.textViewAddress = (TextView) convertView.findViewById(R.id.textViewAddress);
-            viewHolder.textViewRating = (TextView) convertView.findViewById(R.id.textViewRating);
+            viewHolder.ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
             convertView.setTag(viewHolder);
         }
         else{
@@ -48,8 +49,7 @@ public class ServiceProvidersListAdapter extends ArrayAdapter<ServiceProvider>{
 
         viewHolder.textViewName.setText(serviceProvider.getName());
         viewHolder.textViewAddress.setText(serviceProvider.getAddress());
-        Log.d("test", serviceProvider.getAddress());
-        viewHolder.textViewRating.setText(serviceProvider.getRating());
+        viewHolder.ratingBar.setRating(serviceProvider.getRating());
 
         return convertView;
     }
@@ -57,6 +57,6 @@ public class ServiceProvidersListAdapter extends ArrayAdapter<ServiceProvider>{
     private class ViewHolder{
         TextView textViewName;
         TextView textViewAddress;
-        TextView textViewRating;
+        RatingBar ratingBar;
     }
 }
